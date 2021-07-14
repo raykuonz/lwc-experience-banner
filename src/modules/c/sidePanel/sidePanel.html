@@ -1,0 +1,18 @@
+<template>
+    <div if:true={show} class="panel">
+        <h2>{title}</h2>
+        <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" value={nameValue} />
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <input id="description" name="description" type="text" value={descriptionValue} />
+        </div>
+        <footer>
+            <button onclick={handleSave}>Save</button>
+            <button onclick={handleCancel}>Cancel</button>
+            <button if:true={showDeleteButton} onclick={handleDelete}>Delete</button>
+        </footer>
+    </div>
+</template>

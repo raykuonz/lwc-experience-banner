@@ -1,0 +1,218 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-size: 0.75rem;
+    line-height: 1.2;
+}
+
+.stages {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.stage-wrapper {
+    flex: 0 0 200px;
+    min-height: 100vh;
+    background-color: #7ce9fe;
+    background-image: url('/resources/background.jpg');
+    background-position: bottom left;
+    background-repeat: repeat-x;
+}
+
+.stage-wrapper:last-child {
+    flex-basis: 120px;
+}
+
+.stage-wrapper:nth-child(even) {
+    background-color: #a9f0fe;
+}
+
+.stage {
+    height: 240px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.stage__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #666;
+    color: #FFF;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.stage__title {
+    font-size: 1.5rem;
+}
+
+.journey {
+    position: relative;
+    height: 20px;
+    background-color: #AAA;
+}
+
+.journey__add-milestone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.journey__add-milestone.is-before,
+.journey__add-milestone.is-after {
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity: 0;
+}
+
+.journey__add-milestone.is-before:hover,
+.journey__add-milestone.is-after:hover {
+    opacity: 1;
+}
+
+.journey__add-milestone.is-before {
+    left: 0;
+}
+
+.journey__add-milestone.is-after {
+    left: auto;
+    right: 0;
+}
+
+.milestones {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.milestone-wrapper {
+    position: relative;
+    padding-top: 40px;
+}
+
+.milestone-wrapper::before,
+.milestone-wrapper::after {
+    content: "";
+    position: absolute;
+}
+
+.milestone-wrapper::before {
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    transform: translateX(-50%);
+    background-color: #999;
+}
+
+.milestone-wrapper::after {
+    top: -25px;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    background-color: #999;
+}
+
+.milestone-wrapper:not(:last-child) {
+    margin-right: 10px;
+}
+
+.milestone,
+.experience,
+.exposure {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFF;
+    padding: 5px;
+    width: 160px;
+}
+
+.milestone {
+    margin-bottom: 40px;
+}
+
+.milestone[data-has-experience="true"]::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background-color: #999;
+}
+
+.experiences {
+    display: flex;
+}
+
+.experience-wrapper {
+    position: relative;
+}
+
+.experience-wrapper:not(:last-child) {
+    margin-right: 10px;
+}
+
+.experience-wrapper::before,
+.experience-wrapper::after {
+    content: "";
+    position: absolute;
+}
+
+.experience-wrapper::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background-color: #999;
+}
+
+.experience-wrapper[data-pos="left"]:after,
+.experience-wrapper[data-pos="right"]::after,
+.experience-wrapper[data-pos="center"]::after {
+    top: -20px;
+    height: 2px;
+    background-color: #999;
+}
+
+.experience-wrapper[data-pos="left"]::after,
+.experience-wrapper[data-pos="right"]::after {
+    width: calc(50% + 5px);
+}
+
+.experience-wrapper[data-pos="left"]::after {
+    right: -5px;
+}
+
+.experience-wrapper[data-pos="right"]::after {
+    left: -5px;
+}
+
+.experience-wrapper[data-pos=center]::after {
+    width: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.exposure {
+    border-top: 1px solid #CCC;
+}

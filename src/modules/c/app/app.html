@@ -1,0 +1,146 @@
+<template>
+    <div class="stages">
+
+        <template iterator:stage={stages}>
+            <div
+                key={stage.value.id}
+                class="stage-wrapper"
+                draggable="true"
+                data-stage-id={stage.index}
+                ondragstart={handleStageDragStart}
+            >
+                <header
+                    class="stage"
+                    data-stage-id={stage.index}
+                    onclick={handleEditStage}
+                >
+                    <p class="stage__number">{stage.value.count}</p>
+                    <h2 class="stage__title">{stage.value.name}</h2>
+                    <p>{stage.value.description}</p>
+                </header>
+
+                <div class="journey">
+                    <button
+                        if:false={stage.value.hasMilestones}
+                        class="journey__add-milestone"
+                        data-stage-id={stage.index}
+                        onclick={handleAddMilestone}
+                    >
+                        Add Milestone
+                    </button>
+
+                    <template if:true={stage.value.hasMilestones}>
+                        <button
+                            class="journey__add-milestone is-before"
+                            data-stage-id={stage.index}
+                            onclick={handleAddMilestone}
+                        >
+                            Add Milestone
+                        </button>
+                        <button
+                            class="journey__add-milestone is-after"
+                            data-stage-id={stage.index}
+                            onclick={handleAddMilestone}
+                        >
+                            Add Milestone
+                        </button>
+                    </template>
+                </div>
+
+                <div class="milestones">
+                    <template iterator:milestone={stage.value.milestones}>
+                        <div
+                            key={milestone.value.id}
+                            class="milestone-wrapper"
+                            data-stage-id={stage.index}
+                            data-milestone-id={milestone.index}
+                            onclick={handleEditMilestone}
+                        >
+                            <div class="milestone" data-has-experience={milestone.value.hasExperience}>
+                                <p>Milestone</p>
+                                <h3>{milestone.value.name}</h3>
+                                <button
+                                    data-stage-id={stage.index}
+                                    data-milestone-id={milestone.index}
+                                    onclick={handleAddExperience}
+                                >
+                                    Add Experience
+                                </button>
+                            </div>
+
+                            <div class="experiences">
+                                <template iterator:experience={milestone.value.experiences}>
+                                    <div
+                                        key={experience.value.id}
+                                        class="experience-wrapper"
+                                        data-pos={experience.value.pos}
+                                        data-stage-id={stage.index}
+                                        data-milestone-id={milestone.index}
+                                        data-experience-id={experience.index}
+                                        onclick={handleEditExperience}
+                                    >
+                                        <div class="experience">
+                                            <p>Experience</p>
+                                            <h3>{experience.value.name}</h3>
+                                            <button
+                                                data-stage-id={stage.index}
+                                                data-milestone-id={milestone.index}
+                                                data-experience-id={experience.index}
+                                                onclick={handleAddExposure}
+                                            >
+                                                Add Exposure
+                                            </button>
+                                        </div>
+
+                                        <div class="exposures">
+                                            <template iterator:exposure={experience.value.exposures}>
+                                                <div
+                                                    key={exposure.value.id}
+                                                    class="exposure"
+                                                    data-stage-id={stage.index}
+                                                    data-milestone-id={milestone.index}
+                                                    data-experience-id={experience.index}
+                                                    data-exposure-id={exposure.index}
+                                                    onclick={handleEditExposure}
+                                                >
+                                                    <p>Exposure</p>
+                                                    <h3>{exposure.value.name}</h3>
+                                                </div>
+                                            </template>
+                                        </div>
+
+                                    </div>
+                                </template>
+                            </div>
+
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <div class="stage-wrapper">
+            <header class="stage">
+                <button onclick={handleClearData}>
+                    Clear Data
+                </button>
+            </header>
+            <div class="journey">
+                <button
+                    class="journey__add-milestone"
+                    onclick={handleAddStage}
+                >
+                    Add Stage
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <c-side-panel
+        record-data={recordData}
+        onsave={handleSave}
+        oncancel={handleCancel}
+        ondelete={handleDelete}
+    ></c-side-panel>
+</template>
