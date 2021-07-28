@@ -15,6 +15,27 @@ p {
     line-height: 1.2;
 }
 
+.board {
+    background-image:
+        url('/resources/experience-planner-trees.svg'),
+        url('/resources/experience-planner-mountain.svg'),
+        linear-gradient(
+            to bottom,
+                #CFE9FE 0,
+                #CFE9FE 200px,
+                #9CB663 200px,
+                #9CB663 100%
+            );
+    background-repeat:
+        no-repeat,
+        repeat-x,
+        no-repeat;
+    background-position:
+        0 calc(200px - 125px),
+        0 calc(200px - 73px),
+        0 0;
+}
+
 .stages {
     display: flex;
     justify-content: flex-start;
@@ -23,8 +44,7 @@ p {
 .stage-wrapper {
     flex: 0 0 200px;
     min-height: 100vh;
-    background-color: #7ce9fe;
-    background-image: url('/resources/background.jpg');
+    background-color: rgba(255, 255, 255, 0.12);
     background-position: bottom left;
     background-repeat: repeat-x;
 }
@@ -34,7 +54,7 @@ p {
 }
 
 .stage-wrapper:nth-child(even) {
-    background-color: #a9f0fe;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .stage {
@@ -47,8 +67,10 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    margin-top: 0;
+    margin-bottom: 4px;
+    width: 32px;
+    height: 32px;
     background-color: #666;
     color: #FFF;
     font-size: 1.5rem;
@@ -56,7 +78,18 @@ p {
 }
 
 .stage__title {
-    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.stage__description {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.625rem;
+    line-height: 1rem;
 }
 
 .journey {
